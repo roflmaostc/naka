@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+<style>
+body {
+	text-align:center;
+}
+#clock {
+	font-family:arial;
+	font-size:2em;
+	font-weight:bold;
+	color:#555;
+</style>
+</head>
+
+<body>
+
+<center>
+	<h2>Noch</h2>
+</center>
+	<p id="clock"></p>
+<script>
+var end = new Date('08/17/2023 0:00 AM'),
+    sec = 1000,
+    min = sec * 60,
+    hour = min * 60,
+    day = hour * 24,
+    timer;
+
+function remain() {
+    var now = new Date(),
+        between = end - now;
+
+    var days = Math.floor(between / day),
+        hours = Math.floor((between % day) / hour),
+        minutes = Math.floor((between % hour) / min),
+        seconds = Math.floor((between % min) / sec);
+
+    var dayString = ' Tage ',
+        hourString = ' Stunden ',
+        minString = ' Minuten ',
+        secString = ' Sekunden ';
+
+    if (days == 1) {
+        dayString = ' Tag ';
+    };
+    if (hours == 1) {
+        hourString = ' Stunde ';
+    };
+    if (minutes == 1) {
+        minString = ' Minute ';
+    };
+    if (seconds == 1) {
+        secString = ' Sekunde ';
+    };
+    var clock = days + dayString + hours + hourString + minutes + minString + seconds + secString;
+    document.getElementById("clock").innerHTML = clock;
+}
+
+timer = setInterval(function () {
+    remain();
+}, 1000);
+</script>
+	
+<center>
+	<h2>bis zur Naka 23</h2>
+</center>
+</body>
+</html>
